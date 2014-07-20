@@ -1,0 +1,33 @@
+{
+  "name": "nwitch-abstract",
+  "version": "0.0.0",
+  "description": "nwitch plugin for getting a nice abstract on any topic",
+  "keywords": [
+    "nwitch",
+    "nwitch-plugin"
+  ],
+  "repository": "nwitch/nwitch-abstract",
+  "license": "MIT",
+  "author": "Kenan Yildirim <kenan@kenany.me> (http://kenany.me/)",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "LICENSE.txt"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tape test/index.js"
+  },
+  "dependencies": {
+    "behest": "^1.0.0",
+    "node-ddg-api": "^0.1.4"
+  },
+  "devDependencies": {
+    "lodash.isfunction": "^2.4.1",
+    "readable-stream": "~1.0.0",
+    "slate-irc": "^0.6.0",
+    "tape": "^2.13.1"
+  }
+}
