@@ -16,11 +16,14 @@ test('gets abstract on given topic', function(t) {
   var client = irc(stream);
   client.use(nwitchAbstract());
 
+  var testCommand = ':KenanY!KenanY@irc.kenany.me PRIVMSG #nwitch :' +
+                    '!abstract numerology\r\n';
+
   var n = 0;
   stream.on('data', function(chunk) {
     switch (n++) {
       case 0:
-        t.equal(chunk, ':KenanY!KenanY@irc.kenany.me PRIVMSG #nwitch :!abstract numerology\r\n');
+        t.equal(chunk, testCommand);
         break;
       case 1:
         t.equal(chunk, 'PRIVMSG #nwitch :KenanY: Numerology is any belief in ' +
@@ -34,12 +37,13 @@ test('gets abstract on given topic', function(t) {
                        'by modern scientists.\r\n');
         break;
       case 2:
-        t.equal(chunk, 'PRIVMSG #nwitch :KenanY: https://en.wikipedia.org/wiki/Numerology\r\n');
+        t.equal(chunk, 'PRIVMSG #nwitch :KenanY: ' +
+                       'https://en.wikipedia.org/wiki/Numerology\r\n');
         break;
     }
   });
 
-  stream.write(':KenanY!KenanY@irc.kenany.me PRIVMSG #nwitch :!abstract numerology\r\n');
+  stream.write(testCommand);
 });
 
 test('gets abstract on related topic', function(t) {
@@ -48,22 +52,26 @@ test('gets abstract on related topic', function(t) {
   var client = irc(stream);
   client.use(nwitchAbstract());
 
+  var testCommand = ':KenanY!KenanY@irc.kenany.me PRIVMSG #nwitch :' +
+                    '!abstract astronomy\r\n';
+
   var n = 0;
   stream.on('data', function(chunk) {
     switch (n++) {
       case 0:
-        t.equal(chunk, ':KenanY!KenanY@irc.kenany.me PRIVMSG #nwitch :!abstract astronomy\r\n');
+        t.equal(chunk, testCommand);
         break;
       case 1:
-        t.equal(chunk, 'PRIVMSG #nwitch :KenanY: Astronomy A natural science that ' +
-                       'is the study of celestial objects, the physics, ' +
+        t.equal(chunk, 'PRIVMSG #nwitch :KenanY: Astronomy A natural science ' +
+                       'that is the study of celestial objects, the physics, ' +
                        'chemistry, and...\r\n');
         break;
       case 2:
-        t.equal(chunk, 'PRIVMSG #nwitch :KenanY: https://duckduckgo.com/Astronomy\r\n');
+        t.equal(chunk, 'PRIVMSG #nwitch :KenanY: ' +
+                       'https://duckduckgo.com/Astronomy\r\n');
         break;
     }
   });
 
-  stream.write(':KenanY!KenanY@irc.kenany.me PRIVMSG #nwitch :!abstract astronomy\r\n');
+  stream.write(testCommand);
 });
