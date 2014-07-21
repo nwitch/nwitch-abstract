@@ -1,5 +1,7 @@
 # nwitch-abstract
 
+[![Build Status](https://travis-ci.org/nwitch/nwitch-abstract.svg)](https://travis-ci.org/nwitch/nwitch-abstract)
+
 [nwitch][] (and [slate-irc][]) plugin for getting a nice abstract on any topic.
 
 ``` irc
